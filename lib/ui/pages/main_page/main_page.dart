@@ -1,6 +1,7 @@
-import 'package:ad_blocker/ui/widgets/custom_app_bar.dart';
+import 'package:ad_blocker/ui/widgets/general_widgets/custom_app_bar.dart';
 import 'package:ad_blocker/ui/widgets/main_screen_widgets/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class MainPage extends StatelessWidget {
               shape: const CircleBorder(),
               primary: const Color(0xFFB9B9B9),
             ),
-            child: Image.asset('assets/icons/on_button.png'),
+            child: SvgPicture.asset('assets/icons/on.svg'),
           ),
           const SizedBox(height: 98),
           const Text(

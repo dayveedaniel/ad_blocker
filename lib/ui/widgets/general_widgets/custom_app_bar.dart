@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarText;
-  final List<Widget>? appBarActions; 
+  final Widget? appBarAction;
 
   const CustomAppBar({
     Key? key,
     required this.appBarText,
-    this.appBarActions,
+    this.appBarAction,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      actions: appBarActions,
       elevation: 0.0,
       backgroundColor: Colors.transparent,
       flexibleSpace: ClipPath(
@@ -30,15 +29,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           child: Center(
-              child: Text(
-            appBarText,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.5,
-              color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (appBarAction != null)
+                const Expanded(
+                  child: SizedBox.shrink(),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Text(
+                    appBarText,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.5,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                if (appBarAction != null) appBarAction!,
+              ],
             ),
-          )),
+          ),
         ),
       ),
     );
