@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SubscribeNowButton extends StatelessWidget {
-  const SubscribeNowButton({Key? key}) : super(key: key);
+class CustomButton extends StatelessWidget {
+  final String text;
+  final Function()? onTap;
+
+  const CustomButton({
+    Key? key,
+    required this.text,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +46,9 @@ class SubscribeNowButton extends StatelessWidget {
             minHeight: 68 * screenHeightCoefficient,
           ),
           alignment: Alignment.center,
-          child: const Text(
-            'Subscribe now',
-            style: TextStyle(
+          child: Text(
+            text,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.w600,

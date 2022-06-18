@@ -1,6 +1,6 @@
 import 'package:ad_blocker/navigation/app_navigation.dart';
 import 'package:ad_blocker/navigation/route_names.dart';
-import 'package:ad_blocker/ui/widgets/tab_bar_indicator.dart';
+import 'package:ad_blocker/ui/widgets/general_widgets/tab_bar_indicator.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
