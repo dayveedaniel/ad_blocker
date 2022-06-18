@@ -1,7 +1,6 @@
-import 'package:ad_blocker/ui/pages/main_page/main_page.dart';
+import 'package:ad_blocker/ui/main_page.dart';
+import 'package:ad_blocker/ui/widgets/main_screen_widgets/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-
-import 'ui/pages/buy_subscription_page/buy_subscription_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -10,9 +9,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: const Color(0xffF5F5F5),
+        //primarySwatch:MaterialColor(0xffD9D9D9),
+        tabBarTheme: TabBarTheme(
+          labelColor: const Color(0xff5D6CF0),
+          indicatorSize: TabBarIndicatorSize.label,
+          indicator:
+              CircleTabIndicator(color: const Color(0xff5D6CF0), radius: 3),
+          unselectedLabelColor: const Color(0xffD9D9D9),
+          //labelPadding: EdgeInsets.only(bottom: 50),
+        ),
       ),
-      home: const BuySubscriptionPage(),
+      home: const MainPage(),
     );
   }
 }
