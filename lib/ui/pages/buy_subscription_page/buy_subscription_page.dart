@@ -1,5 +1,12 @@
+import 'package:ad_blocker/ui/pages/buy_subscription_page/buy_subscription_page_cubit.dart';
+import 'package:ad_blocker/ui/pages/buy_subscription_page/buy_subscription_page_state.dart';
+import 'package:ad_blocker/ui/widgets/buy_subscription_page_widgets/best_deal.dart';
+import 'package:ad_blocker/ui/widgets/buy_subscription_page_widgets/documents_buttons.dart';
+import 'package:ad_blocker/ui/widgets/buy_subscription_page_widgets/guide.dart';
+import 'package:ad_blocker/ui/widgets/buy_subscription_page_widgets/subscribe_now_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../widgets/buy_subscription_page_widgets/offer_container.dart';
 import '../../widgets/general_widgets/custom_app_bar.dart';
 
 class BuySubscriptionPage extends StatelessWidget {
@@ -7,73 +14,98 @@ class BuySubscriptionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        appBarText: 'Premium Anti-A',
-        appBarAction: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.close,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 48),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
-            SizedBox(height: 57),
-            Text(
-              'How to enable Anti-Ads in\n Safari:',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 22,
-                letterSpacing: 0.5,
+    final screenHeightCoefficient = MediaQuery.of(context).size.height / 812;
+    final screenWidthCoefficient = MediaQuery.of(context).size.width / 375;
+
+    return BlocBuilder<BuySubscriptionPageCubit, BuySubscriptionPageState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: CustomAppBar(
+            appBarText: 'Premium Anti-A',
+            appBarAction: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: IconButton(
+                onPressed: () {},
+                iconSize: 18,
+                icon: const Icon(
+                  Icons.close,
+                  color: Colors.white,
+                ),
               ),
             ),
-            SizedBox(height: 30),
-            InstructionStep(text: 'Control Privacy & Stop Pops'),
-            SizedBox(height: 9),
-            InstructionStep(text: 'Advanced AdBlocker'),
-            SizedBox(height: 9),
-            InstructionStep(text: 'Accelerate Your Device'),
-            SizedBox(height: 9),
-            InstructionStep(text: 'Save Bettery & Mobile Data')
-          ],
-        ),
-      ),
+          ),
+          body: Column(
+            children: [
+              SizedBox(height: 10 * screenHeightCoefficient),
+              const Guide(),
+              SizedBox(height: 64 * screenHeightCoefficient),
+              SubscriptionOffers(
+                screenHeightCoefficient: screenHeightCoefficient,
+                screenWidthCoefficient: screenWidthCoefficient,
+                state: state,
+              ),
+              SizedBox(height: 35 * screenHeightCoefficient),
+              const SubscribeNowButton(),
+              SizedBox(height: 22 * screenWidthCoefficient),
+              const DocumentsButtons(),
+            ],
+          ),
+        );
+      },
     );
   }
 }
 
-class InstructionStep extends StatelessWidget {
-  final String text;
+class SubscriptionOffers extends StatelessWidget {
+  final BuySubscriptionPageState state;
+  final double screenHeightCoefficient;
+  final double screenWidthCoefficient;
 
-  const InstructionStep({
+  const SubscriptionOffers({
     Key? key,
-    required this.text,
+    required this.state,
+    required this.screenHeightCoefficient,
+    required this.screenWidthCoefficient,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SvgPicture.asset('assets/icons/point.svg'),
-        const SizedBox(width: 4),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w400,
-            color: const Color(0xff000000).withOpacity(0.6),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          OfferContainer(
+            id: 1,
+            state: state,
+            amountOfTrialDays: 3,
+            pricing: r'After $14,99 every week',
           ),
-        )
-      ],
+          Column(
+            children: [
+              Stack(
+                alignment: const Alignment(0, -1.13),
+                children: [
+                  OfferContainer(
+                    id: 2,
+                    state: state,
+                    amountOfTrialDays: 3,
+                    pricing: r'After $24,99 for month',
+                  ),
+                  const BestDeal(),
+                ],
+              ),
+              SizedBox(height: 52 * screenHeightCoefficient),
+            ],
+          ),
+          OfferContainer(
+            id: 3,
+            state: state,
+            amountOfTrialDays: 14,
+            pricing: r'After $49,99 every years',
+          ),
+        ],
+      ),
     );
   }
 }

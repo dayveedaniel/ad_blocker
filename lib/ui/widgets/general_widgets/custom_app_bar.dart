@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   child: SizedBox.shrink(),
                 ),
                 Expanded(
-                  flex: 5,
+                  flex: 7,
                   child: Text(
                     appBarText,
                     textAlign: TextAlign.center,
@@ -59,7 +59,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(130.0);
+  Size get preferredSize => const Size.fromHeight(132.0);
 }
 
 class CustomShape extends CustomClipper<Path> {
