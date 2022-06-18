@@ -1,4 +1,7 @@
+import 'package:ad_blocker/ui/pages/block_page.dart';
+import 'package:ad_blocker/ui/pages/filters_page.dart';
 import 'package:ad_blocker/ui/pages/home_page.dart';
+import 'package:ad_blocker/ui/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -31,17 +34,31 @@ class _MainPageState extends State<MainPage>
         controller: tabController,
         children: [
           Navigator(
-            key: firstTabNavKey,
+            // key: firstTabNavKey,
+            //initialRoute: RouteNames.homePage,
+            pages: [MaterialPage(child: HomePage())],
             onPopPage: (route, result) {
               return true;
             },
-            pages: [
-              MaterialPage(child: HomePage()),
-            ],
           ),
-          Navigator(),
-          Navigator(),
-          Navigator(),
+          Navigator(
+            pages: [MaterialPage(child: BlockPage())],
+            onPopPage: (route, result) {
+              return true;
+            },
+          ),
+          Navigator(
+            pages: [MaterialPage(child: FiltersPage())],
+            onPopPage: (route, result) {
+              return true;
+            },
+          ),
+          Navigator(
+            pages: [MaterialPage(child: SettingsPage())],
+            onPopPage: (route, result) {
+              return true;
+            },
+          ),
         ],
       ),
       bottomNavigationBar: CustomBottomNavBar(tabController: tabController),

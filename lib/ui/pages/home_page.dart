@@ -1,3 +1,4 @@
+import 'package:ad_blocker/navigation/route_names.dart';
 import 'package:ad_blocker/ui/widgets/general_widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,7 +17,10 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true)
+                  .pushNamed(RouteNames.buySubscriptionPage);
+            },
             style: ElevatedButton.styleFrom(
               fixedSize: Size(
                 MediaQuery.of(context).size.width * 0.262,
