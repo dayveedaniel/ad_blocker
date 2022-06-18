@@ -1,5 +1,5 @@
 import 'package:ad_blocker/ui/main_page.dart';
-import 'package:ad_blocker/ui/widgets/main_screen_widgets/custom_navigation_bar.dart';
+import 'package:ad_blocker/ui/widgets/tab_bar_indicator.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {

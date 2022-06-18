@@ -1,5 +1,4 @@
 import 'package:ad_blocker/ui/pages/home_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -45,33 +44,63 @@ class _MainPageState extends State<MainPage>
           Navigator(),
         ],
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            height: 70,
-            margin: const EdgeInsets.symmetric(horizontal: 16.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: TabBar(
-              indicatorPadding: const EdgeInsets.only(bottom: 9),
-              unselectedLabelColor: Colors.red,
-              tabs: [
-                Tab(icon: SvgPicture.asset('assets/icons/home.svg')),
-                Tab(icon: SvgPicture.asset('assets/icons/block.svg')),
-                Tab(icon: SvgPicture.asset('assets/icons/filter.svg')),
-                Tab(icon: SvgPicture.asset('assets/icons/settings.svg')),
-              ],
+      bottomNavigationBar: CustomBottomNavBar(tabController: tabController),
+    );
+  }
+}
+
+class CustomBottomNavBar extends StatefulWidget {
+  const CustomBottomNavBar({
+    Key? key,
+    required this.tabController,
+  }) : super(key: key);
+
+  final TabController tabController;
+
+  @override
+  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
+}
+
+class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
+  final tabItems = ['home', 'block', 'filter', 'settings'];
+
+  @override
+  Widget build(BuildContext context) {
+    final color = TabBarTheme.of(context).labelColor!;
+    final int currentIndex = widget.tabController.index;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          height: 70,
+          margin: const EdgeInsets.symmetric(horizontal: 16.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: TabBar(
+            onTap: (index) {
+              setState(() {});
+            },
+            controller: widget.tabController,
+            indicatorPadding: const EdgeInsets.only(bottom: 10),
+            unselectedLabelColor: Colors.red,
+            tabs: List.generate(
+              4,
+              (index) => Tab(
+                  icon: SvgPicture.asset(
+                'assets/icons/${tabItems[index]}.svg',
+                color: currentIndex == index ? color : null,
+              )),
+              growable: false,
             ),
           ),
-          const SizedBox(
-            height: 40,
-          )
-        ],
-      ),
+        ),
+        const SizedBox(
+          height: 40,
+        )
+      ],
     );
   }
 }
