@@ -3,7 +3,7 @@ import 'package:ad_blocker/ui/pages/buy_subscription_page/buy_subscription_page_
 import 'package:ad_blocker/ui/widgets/buy_subscription_page_widgets/best_deal.dart';
 import 'package:ad_blocker/ui/widgets/buy_subscription_page_widgets/documents_buttons.dart';
 import 'package:ad_blocker/ui/widgets/buy_subscription_page_widgets/guide.dart';
-import 'package:ad_blocker/ui/widgets/buy_subscription_page_widgets/subscribe_now_button.dart';
+import 'package:ad_blocker/ui/widgets/general_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../widgets/buy_subscription_page_widgets/offer_container.dart';
@@ -25,7 +25,9 @@ class BuySubscriptionPage extends StatelessWidget {
             appBarAction: Padding(
               padding: const EdgeInsets.all(4.0),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
                 iconSize: 18,
                 icon: const Icon(
                   Icons.close,
@@ -45,7 +47,7 @@ class BuySubscriptionPage extends StatelessWidget {
                 state: state,
               ),
               SizedBox(height: 35 * screenHeightCoefficient),
-              const SubscribeNowButton(),
+              CustomButton(text: 'Subscribe now', onTap: () {}),
               SizedBox(height: 22 * screenWidthCoefficient),
               const DocumentsButtons(),
             ],
