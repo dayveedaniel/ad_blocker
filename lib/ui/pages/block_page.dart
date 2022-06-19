@@ -13,10 +13,9 @@ class BlockPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFFFFFFFF),
-            border: Border.all(color: const Color(0xFFFFFFFF)),
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
+          decoration: const BoxDecoration(
+            color: Color(0xFFFFFFFF),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
