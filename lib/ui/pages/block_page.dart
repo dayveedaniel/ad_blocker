@@ -1,6 +1,6 @@
 import 'package:ad_blocker/ui/widgets/general_widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import '../widgets/block_page_widgets/custom_divider.dart';
+import '../widgets/general_widgets/custom_divider.dart';
 import '../widgets/block_page_widgets/option_tile.dart';
 
 class BlockPage extends StatelessWidget {
