@@ -81,7 +81,8 @@ class OptionTile extends StatelessWidget {
               ),
             ),
           ),
-          Switch(                                          //switcher 
+          Switch(
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             value: true,
             onChanged: (bool isActive) {},
           ),

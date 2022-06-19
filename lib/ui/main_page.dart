@@ -36,25 +36,25 @@ class _MainPageState extends State<MainPage>
           Navigator(
             // key: firstTabNavKey,
             //initialRoute: RouteNames.homePage,
-            pages: [MaterialPage(child: HomePage())],
+            pages: const [MaterialPage(child: HomePage())],
             onPopPage: (route, result) {
               return true;
             },
           ),
           Navigator(
-            pages: [MaterialPage(child: BlockPage())],
+            pages: const [MaterialPage(child: BlockPage())],
             onPopPage: (route, result) {
               return true;
             },
           ),
           Navigator(
-            pages: [MaterialPage(child: FiltersPage())],
+            pages: const [MaterialPage(child: FiltersPage())],
             onPopPage: (route, result) {
               return true;
             },
           ),
           Navigator(
-            pages: [MaterialPage(child: SettingsPage())],
+            pages: const [MaterialPage(child: SettingsPage())],
             onPopPage: (route, result) {
               return true;
             },
