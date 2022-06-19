@@ -5,6 +5,7 @@ import 'package:ad_blocker/ui/pages/buy_subscription_page/buy_subscription_page_
 import 'package:ad_blocker/ui/pages/filters_page.dart';
 import 'package:ad_blocker/ui/pages/home_page.dart';
 import 'package:ad_blocker/ui/pages/settings_page.dart';
+import 'package:ad_blocker/ui/pages/setup_training_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,7 @@ class AppNavigation {
     RouteNames.blockPage: (context) => const BlockPage(),
     RouteNames.filtersPage: (context) => const FiltersPage(),
     RouteNames.settingsPage: (context) => const SettingsPage(),
+    RouteNames.setupTrainingPage: (context) => const SetupTrainingPage(),
     RouteNames.buySubscriptionPage: (context) =>
         BlocProvider<BuySubscriptionPageCubit>(
           create: (context) => BuySubscriptionPageCubit(),
